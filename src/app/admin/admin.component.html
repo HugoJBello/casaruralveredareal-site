@@ -1,0 +1,162 @@
+<br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br>
+<div>
+  <form class="form-inline my-2 my-lg-0">
+    <a  class="btn btn-outline-success my-2 my-sm-0" *ngIf="!authService.isAdmin" (click)="authService.login()" i18n>Log in</a>
+    <a  class="btn btn-outline-success my-2 my-sm-0" (click)="authService.logout()" *ngIf="authService.isAdmin" i18n>Log Out</a>
+  </form>
+</div>
+<br>
+
+<div *ngIf="appIsUninstalled">
+  <div class="card" style="width: 350px">
+    <div class="card-block" style="padding:10px;">
+      <span> Seems like your app is not installed yet. The following are the default admin users:</span>
+      <p *ngFor="let user of adminAccounts">
+        <span>{{user.username}}</span> (<span>{{user.email}}</span>)
+      </p>
+      <input type="submit" class="btn btn-primary" (click)="installAdminUsers()" value="Install admin users" />
+    </div>
+  </div>
+
+</div>
+
+<div *ngIf="authService.isAdmin">
+  <br>
+  <div class="card" style="width: 250px">
+    <div class="card-block" style="padding:10px;">
+      <h3 class="card-title" i18n>
+        Edition
+      </h3>
+      <div class="card-text">
+        <a routerLink="/editor" routerLinkActive="active">
+          <p><span i18n>Create a new article</span>
+            edit
+          </p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="width: 400px">
+    <div class="card-block" style="padding:10px;">
+      <h3 class="card-title" i18n>
+        General configuration
+      </h3>
+
+      <div class="card-text" *ngIf="configDTO">
+        <table>
+          <tbody>
+              <tr>
+                  <td i18n>
+                    app_owner:
+                  </td>
+                  <td>
+                    <input type="text" [(ngModel)]="configDTO.app_owner" />
+                  </td>
+                </tr>
+              <tr>
+              <tr>
+                  <td i18n>
+                    app_id:
+                  </td>
+                  <td>
+                    <input type="text" [(ngModel)]="configDTO.app_id" />
+                  </td>
+                </tr>
+              <tr>
+              <tr>
+                  <td i18n>
+                    app_name:
+                  </td>
+                  <td>
+                    <input type="text" [(ngModel)]="configDTO.app_name" />
+                  </td>
+                </tr>
+            <tr>
+              <td i18n>
+                special tags:
+              </td>
+              <td>
+                <input type="text" [(ngModel)]="specialTags" />
+              </td>
+            </tr>
+            <tr>
+            <tr>
+                <td i18n>
+                    navbar background color:
+                  </td>
+                  <td>
+                    <input  [(ngModel)]="configDTO.navbar_background_color" />
+                  </td>
+              </tr>
+            <tr>
+              <td i18n>
+                  Mini banner intro color:
+                </td>
+                <td>
+                  <input  [(ngModel)]="configDTO.mini_intro_color" />
+                </td>
+            </tr>
+
+          </tbody>
+        </table>
+        <input type="checkbox" [checked]="showMiniIntroPage" (change)="onChangeShowMiniIntroPage()"/> <span i18n>Show small banner (news)</span>
+        <br>
+        <input type="submit" class="btn btn-primary" (click)="onPostButton()" value="Change" />
+      </div>
+    </div>
+  </div>
+
+
+  <div class="card" style="width: 400px">
+    <div class="card-block" style="padding:10px;">
+      <h3 class="card-title" i18n>
+        Banners Configuration
+      </h3>
+
+      <div class="card-text" *ngIf="configDTO">
+        <table>
+          <tbody>
+              <tr>
+              <td i18n>
+                  banners:
+                </td>
+                <td>
+                  <input  [(ngModel)]="banners" />
+                </td>
+            </tr>
+            <tr>
+                <td i18n>
+                    banner background color:
+                  </td>
+                  <td>
+                    <input  [(ngModel)]="configDTO.banner_color" />
+                  </td>
+              </tr>
+                <tr>
+                  <td i18n>
+                      twitter feed url:
+                    </td>
+                    <td>
+                      <input  [(ngModel)]="configDTO.twitter_feed_url" />
+                    </td>
+                </tr>
+
+          </tbody>
+        </table>
+        <input type="checkbox" [checked]="showBanners" (change)="onChangeShowBanners()"/> <span i18n>Show banners</span>
+        <br>
+        <input type="checkbox" [checked]="showTagsBanner" (change)="onChangeShowTagsBanner()"/> <span i18n>Show tags banner</span>
+        <br>
+        <input type="checkbox" [checked]="showTwitterFeed" (change)="onChangeShowTwitterFeed()"/> <span i18n>Show twitter feed</span>
+        <br>
+        <input type="submit" class="btn btn-primary" (click)="onPostButton()" value="Change" />
+      </div>
+    </div>
+  </div>
+</div>
