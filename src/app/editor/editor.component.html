@@ -1,3 +1,33 @@
-<p>
-  editor works!
-</p>
+<div class="site-content container">
+  <table>
+    <tbody>
+    <tr>
+      <td i18n>
+        title:
+      </td>
+      <td>
+        <input #textbox type="text" [(ngModel)]="title" />
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <br>
+  <input type="checkbox" [checked]="hidden" (change)="onChangeHidden()" /> <span i18n>Hidden entry</span>
+  <br>
+  <input type="checkbox" [checked]="includeFrontImage" (change)="onChangeIncludeFrontImage()" /> <span i18n>Include first image in heading</span>
+  <br>
+
+
+  <br>
+  <input type="submit" class="btn btn-primary" (click)="onPostButton()" value="Post" /> &nbsp;
+  <p></p>
+
+  <br>
+
+  <div *ngIf="entryDTO">
+    <input class="btn btn-danger" type="submit" (click)="onDeleteButton()" value="Delete entry" i18n/>
+  </div>
+
+
+
+</div>

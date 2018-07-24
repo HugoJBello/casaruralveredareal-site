@@ -4,6 +4,7 @@ import {AngularFirestore , AngularFirestoreCollection} from 'angularfire2/firest
 import {UserDTO} from './DTO/userDTO';
 import {ConfigDTO} from './DTO/configDTO';
 import {Observable} from 'rxjs/Observable';
+import {EntryDTO} from './DTO/entryDTO';
 
 @Injectable ( {
   providedIn: 'root'
@@ -19,6 +20,21 @@ export class FirebaseDbService {
   private ENTRIES_METADATA_COUNT_COLLECTION = 'entries-metadata-' + this.appId;
 
   constructor ( public db: AngularFirestore ) {
+  }
+
+  getEntry ( entryName: string ): Observable<any> {
+    return this.db.collection<any> ( this.ENTRIES_COLLECTION , ref => ref.where ( 'app_id' , '==' , this.appId )
+      .where ( 'name' , '==' , entryName ) ).valueChanges ();
+  }
+
+  deleteEntry ( entryDTO: EntryDTO ): Promise<any> {
+    return this.db.collection ( this.ENTRIES_COLLECTION , ref => ref.where ( 'app_id' , '==' , this.appId ) )
+      .doc ( entryDTO.name ).delete ();
+  }
+
+  postEntry ( entryDTO: EntryDTO ): Promise<any> {
+    return this.db.collection ( this.ENTRIES_COLLECTION , ref => ref.where ( 'app_id' , '==' , this.appId ) )
+      .doc ( entryDTO.name ).set ( Object.assign ( {} , entryDTO ) );
   }
 
   saveConfig ( configDTO: ConfigDTO ): Promise<any> {
