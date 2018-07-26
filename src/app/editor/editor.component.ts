@@ -83,10 +83,31 @@ export class EditorComponent implements OnInit, OnDestroy {
   }
 
   public constructEntryDTO() {
-    if (!this.entryDTO) { this.entryDTO = new EntryDTO; }
-    if (!this.entryDTO.created_by) { this.entryDTO.created_by = this.userName; }
-    if (!this.entryDTO.created_at) { this.entryDTO.created_at = new Date(); }
-    if (!this.entryDTO.content){this.entryDTO.content = '';}
+    if (!this.entryDTO) {
+      this.entryDTO = new EntryDTO;
+    }
+    if (!this.entryDTO.created_by) {
+      this.entryDTO.created_by = this.userName;
+    }
+    if (!this.entryDTO.created_at) {
+      this.entryDTO.created_at = new Date();
+    }
+    if (!this.entryDTO.content) {
+      this.entryDTO.content = '';
+    }
+    if (!this.entryDTO.categories) {
+      this.entryDTO.categories = [];
+    }
+    if (!this.entryDTO.include_front_image) {
+      this.entryDTO.include_front_image = false;
+    }
+    if (!this.entryDTO.hidden) {
+      this.entryDTO.hidden = false;
+    }
+    if (!this.entryDTO.blog_version) {
+      this.entryDTO.blog_version = false;
+    }
+
     this.entryDTO.hidden = this.hidden;
 
     this.entryDTO.title = this.title;
@@ -111,7 +132,7 @@ export class EditorComponent implements OnInit, OnDestroy {
 
   public onDeleteButton(): void {
     if (window.confirm('Are sure you want to delete this item ?')) {
-      const oldCategoriesObject = this.entryDTO.categories_object;
+      // const oldCategoriesObject = this.entryDTO.categories_object;
       this.firebaseDb.deleteEntry(this.entryDTO).then(() => {
         this.router.navigate(['./entries']);
       });
@@ -142,7 +163,9 @@ export class EditorComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.sub) { this.sub.unsubscribe(); }
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
     this.titleService.setTitle(CONFIG.APP_NAME);
   }
 

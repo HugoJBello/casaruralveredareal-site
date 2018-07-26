@@ -3,54 +3,55 @@ import {UserDTO} from '../DTO/userDTO';
 import {ConfigDTO} from '../DTO/configDTO';
 import {EntryDTO} from '../DTO/entryDTO';
 
-@Injectable ()
+@Injectable()
 export class UtilsParseFromFirebaseService {
 
-  constructor () {
+  constructor() {
   }
 
-  parseEntryFromFirebase(data){
+  parseEntryFromFirebase(data) {
     data = data[0];
-    if(data){
+    if (data) {
       return this.constructEntryDTO(data);
     }
   }
-  constructEntryDTO(entryFire){
-    var entryDTO: EntryDTO = new EntryDTO;
+
+  constructEntryDTO(entryFire) {
+    const entryDTO: EntryDTO = new EntryDTO;
     entryDTO._id = entryFire._id;
     entryDTO.title = entryFire.title;
     entryDTO.name = entryFire.name;
     entryDTO.content = entryFire.content;
-    entryDTO.created_at = entryFire.created_at;
+    entryDTO.created_at = new Date(entryFire.created_at.seconds * 1000);
     entryDTO.updated_at = entryFire.updated_at;
-    entryDTO.categories=entryFire.categories;
-    entryDTO.categories_object=entryFire.categories_object;
-    entryDTO.hidden=entryFire.hidden;
-    entryDTO.created_by=entryFire.created_by;
-    entryDTO.edited_by=entryFire.edited_by;
-    entryDTO.include_front_image=entryFire.include_front_image;
-    return entryDTO
+    entryDTO.categories = entryFire.categories;
+    // entryDTO.categories_object = entryFire.categories_object;
+    entryDTO.hidden = entryFire.hidden;
+    entryDTO.created_by = entryFire.created_by;
+    entryDTO.edited_by = entryFire.edited_by;
+    entryDTO.include_front_image = entryFire.include_front_image;
+    return entryDTO;
   }
 
-  parseListUsersFirebase ( data ) {
+  parseListUsersFirebase(data) {
     const admins = [];
-    if ( data ) {
-      for ( const userFire of data ) {
+    if (data) {
+      for (const userFire of data) {
         const userDTO: UserDTO = new UserDTO;
         userDTO.username = userFire.username;
         userDTO.email = userFire.email;
         userDTO.role = userFire.role;
-        console.log ( userDTO );
-        admins.push ( userDTO );
+        console.log(userDTO);
+        admins.push(userDTO);
       }
     }
     return admins;
   }
 
-  parseUserFromFirebase ( data ) {
-    data = data[ 0 ];
+  parseUserFromFirebase(data) {
+    data = data[0];
     const userDTO: UserDTO = new UserDTO;
-    if ( data ) {
+    if (data) {
       userDTO.username = data.username;
       userDTO.email = data.email;
       userDTO.role = data.role;
@@ -58,10 +59,10 @@ export class UtilsParseFromFirebaseService {
     return userDTO;
   }
 
-  parseConfigFromFirebase ( data ) {
-    data = data[ 0 ];
+  parseConfigFromFirebase(data) {
+    data = data[0];
     const configDTO: ConfigDTO = new ConfigDTO;
-    if ( data ) {
+    if (data) {
       configDTO.app_id = data.app_id;
       configDTO.app_name = data.app_name;
       configDTO.app_owner = data.app_owner;

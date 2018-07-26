@@ -40,7 +40,7 @@
           <li class="list-group-item" *ngIf="entryDTO.created_at">
             <em>
               <span i18n>Created at </span>
-              {{entryDTO.created_at}}
+              {{entryDTO.created_at | date: 'dd/MM/yyyy'}}
             </em>
           </li>
           <!--

@@ -6,7 +6,7 @@ export class EntryDTO {
   created_at: Date;
   content: string;
   categories: string[];
-  categories_object: any;
+  // categories_object: any;
   edited_by: string;
   created_by: string;
   hidden: boolean;
