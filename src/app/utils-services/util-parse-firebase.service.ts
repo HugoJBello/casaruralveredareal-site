@@ -8,6 +8,28 @@ export class UtilsParseFromFirebaseService {
   constructor () {
   }
 
+  parseEntryFromFirebase(data){
+    data = data[0];
+    if(data){
+      return this.constructEntryDTO(data);
+    }
+  }
+  constructEntryDTO(entryFire){
+    var entryDTO: EntryDTO = new EntryDTO;
+    entryDTO._id = entryFire._id;
+    entryDTO.title = entryFire.title;
+    entryDTO.name = entryFire.name;
+    entryDTO.content = entryFire.content;
+    entryDTO.created_at = entryFire.created_at;
+    entryDTO.updated_at = entryFire.updated_at;
+    entryDTO.categories=entryFire.categories;
+    entryDTO.categories_object=entryFire.categories_object;
+    entryDTO.hidden=entryFire.hidden;
+    entryDTO.created_by=entryFire.created_by;
+    entryDTO.edited_by=entryFire.edited_by;
+    entryDTO.include_front_image=entryFire.include_front_image;
+    return entryDTO
+  }
 
   parseListUsersFirebase ( data ) {
     const admins = [];

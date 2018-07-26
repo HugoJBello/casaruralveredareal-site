@@ -33,6 +33,7 @@
     "font-awesome": "^4.7.0",
     "ngx-editor": "^3.3.0",
     "node-sass": "^4.9.0",
+    "npm": "^6.2.0",
     "prismjs": "^1.15.0",
     "rxjs": "^6.2.0",
     "rxjs-compat": "^6.2.0",

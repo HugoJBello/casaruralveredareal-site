@@ -23,6 +23,7 @@ import {AuthService} from './auth/auth.service';
 import {DataServiceConfig} from './data-service-config.service';
 import {UtilsParseFromFirebaseService} from './utils-services/util-parse-firebase.service';
 import { InstallationService } from './installation.service';
+import {UtilsDateService} from './utils-services/utils-date.service';
 
 import {CdkTableModule} from '@angular/cdk/table';
 import {MatTableModule} from '@angular/material/table';
@@ -56,6 +57,7 @@ import {MatMenuModule} from '@angular/material/menu';
     DataServiceConfig,
     UtilsParseFromFirebaseService,
     InstallationService,
+    UtilsDateService,
   ],
   bootstrap: [AppComponent]
 })
