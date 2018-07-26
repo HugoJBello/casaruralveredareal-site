@@ -18,6 +18,8 @@ import { AdminComponent } from './admin/admin.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from "@angular/forms";
 import { MatFormFieldModule } from '@angular/material';
+import { NgxEditorModule } from 'ngx-editor';
+import {HttpClientModule} from '@angular/common/http'
 
 import {AuthService} from './auth/auth.service';
 import {DataServiceConfig} from './data-service-config.service';
@@ -30,6 +32,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule, MatSortModule} from '@angular/material';
 
 import {MatMenuModule} from '@angular/material/menu';
+import { EntryComponent } from './entry/entry.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +40,8 @@ import {MatMenuModule} from '@angular/material/menu';
     SpecialMenuComponent,
     HomeComponent,
     EditorComponent,
-    AdminComponent
+    AdminComponent,
+    EntryComponent
   ],
   imports: [
     AppRoutingModule,
@@ -52,6 +56,8 @@ import {MatMenuModule} from '@angular/material/menu';
     Angular2FontawesomeModule,
     FormsModule,
     MatFormFieldModule,
+    NgxEditorModule,
+    HttpClientModule,
   ],
   providers: [AuthService,
     DataServiceConfig,

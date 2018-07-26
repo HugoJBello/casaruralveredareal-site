@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {UserDTO} from '../DTO/userDTO';
 import {ConfigDTO} from '../DTO/configDTO';
+import {EntryDTO} from '../DTO/entryDTO';
 
 @Injectable ()
 export class UtilsParseFromFirebaseService {

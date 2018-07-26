@@ -5,6 +5,7 @@ import { EditorComponent } from './editor/editor.component';
 import { AdminComponent } from './admin/admin.component';
 import { SpecialMenuComponent } from './special-menu/special-menu.component'
 import { AuthGuard } from './auth/auth.guard';
+import { EntryComponent } from './entry/entry.component';
 import { CONFIG } from './config/config';
 
 const newRoutes: Routes = [];
@@ -53,6 +54,10 @@ const routes = [
   {
     path: 'admin',
     component: AdminComponent,
+  },
+  {
+    path: 'entry/:id',
+    component: EntryComponent
   },
 ];
 

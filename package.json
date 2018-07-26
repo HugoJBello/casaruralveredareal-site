@@ -31,6 +31,7 @@
     "bootstrap": "^4.1.1",
     "firebase": "^5.2.0",
     "font-awesome": "^4.7.0",
+    "ngx-bootstrap": "^3.0.1",
     "ngx-editor": "^3.3.0",
     "node-sass": "^4.9.0",
     "npm": "^6.2.0",

@@ -86,10 +86,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     if (!this.entryDTO) { this.entryDTO = new EntryDTO; }
     if (!this.entryDTO.created_by) { this.entryDTO.created_by = this.userName; }
     if (!this.entryDTO.created_at) { this.entryDTO.created_at = new Date(); }
-
-    this.entryDTO.content = this.text;
-    if (!this.entryDTO.content) { this.entryDTO.content = ''; }
-
+    if (!this.entryDTO.content){this.entryDTO.content = '';}
     this.entryDTO.hidden = this.hidden;
 
     this.entryDTO.title = this.title;

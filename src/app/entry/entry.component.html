@@ -1,0 +1,58 @@
+<div *ngIf="entryDTO" class="card card-quote-entry background-light-gray">
+  <div class="container-img background-light-gray" *ngIf="entryDTO.include_front_image && headImage">
+    <img *ngIf="headImage" class="head" src="{{headImage}}" alt="Card image cap">
+  </div>
+  <br>
+  <div class="">
+
+    <div *ngIf="entryDTO" class="card-title text-center">
+      <h1 class="">{{entryDTO.title}}</h1>
+      <!--<p class="lead">{{entryName}}</p>!-->
+      <p>
+        <a class="nav-link" routerLink="/edit/{{entryDTO.name}}" *ngIf="authService.isAdmin" routerLinkActive="active">
+          <fa name="cog" animation="spin"></fa>
+        </a>
+      </p>
+    </div>
+    <br>
+
+    <div *ngIf="entryDTO" class="text-markdown">
+      <div [innerHtml]="entryDTO.content">
+      </div>
+      <!--
+      <meta property="og:image" content="{{headImage}}" *ngIf="headImage"/>
+      <meta name="twitter:image" content="{{headImage}}" *ngIf="headImage">
+      <meta name="twitter:title" content="{{entryDTO.title}}">
+      <meta property="og:title" content="{{entryDTO.title}}" />
+      <meta property="og:type" content="article" />
+      -->
+
+      <br>
+
+      <div class="card info mb-3">
+        <ul class="list-group" *ngIf="entryDTO">
+          <li class="list-group-item" *ngIf="entryDTO.created_by">
+            <em>
+              <span i18n>Created by </span>
+              <a routerLink="/entries-by/{{entryDTO.created_by}}">{{entryDTO.created_by}}</a>
+            </em>
+          </li>
+          <li class="list-group-item" *ngIf="entryDTO.created_at">
+            <em>
+              <span i18n>Created at </span>
+              {{entryDTO.created_at}}
+            </em>
+          </li>
+          <!--
+            <li class="list-group-item" *ngIf="entryDTO.updated_at">
+                <em><span i18n>Edited at </span>
+                  {{entryDTO.updated_at}}
+                </em>
+            </li>
+          -->
+        </ul>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>
