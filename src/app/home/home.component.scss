@@ -1,0 +1,78 @@
+
+:host ::ng-deep img {
+  @media (min-width: 750px){
+    width: 45%;
+    float:left;
+    padding:20px;
+  }
+  @media (max-width: 750px){
+    width: 100%;
+    padding:10px
+  }
+  overflow:hidden;
+}
+.container-img{
+  width: 100%;
+
+  /* big screen*/
+  @media (min-width: 900px){
+    height: 300px;
+  }
+  @media (max-width: 900px){
+    height: 200px;
+  }
+  overflow: hidden;
+  margin: 10px;
+  position: relative;
+
+  display: block;
+  margin: 0 auto;
+  border-style: solid;
+  border-width: 5px;
+
+}
+
+.head {
+  all: none;
+  padding:0px;
+  position: absolute;
+  margin: auto;
+  min-height: 100%;
+  min-width: 100%;
+
+
+  /* For the following settings we set 100%, but it can be higher if needed
+  See the answer's update */
+  left: -80%;
+  right: -80%;
+  top: -80%;
+  bottom: -80%;
+
+}
+
+.text-over-image h2 {
+  position: absolute;
+  @media (min-width: 900px){
+    top: 130px;
+  }
+  @media (max-width: 900px){
+    top: 100px;
+  }
+  left: 0;
+  width: 100%;
+}
+
+.text-over-image h2 span {
+  color: white;
+  @media (min-width: 900px){
+    font: bold 40px/65px Helvetica, Sans-Serif;
+  }
+  @media (max-width: 900px){
+    font: bold 24px/45px Helvetica, Sans-Serif;
+  }
+  letter-spacing: -1px;
+  background: rgb(0, 0, 0); /* fallback color */
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+
+}

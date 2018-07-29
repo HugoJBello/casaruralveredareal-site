@@ -22,8 +22,8 @@
       <!--
       <meta property="og:image" content="{{headImage}}" *ngIf="headImage"/>
       <meta name="twitter:image" content="{{headImage}}" *ngIf="headImage">
-      <meta name="twitter:title" content="{{entryDTO.title}}">
-      <meta property="og:title" content="{{entryDTO.title}}" />
+      <meta name="twitter:title" content="{{entryTitle.title}}">
+      <meta property="og:title" content="{{entryTitle.title}}" />
       <meta property="og:type" content="article" />
       -->
 
@@ -44,9 +44,9 @@
             </em>
           </li>
           <!--
-            <li class="list-group-item" *ngIf="entryDTO.updated_at">
+            <li class="list-group-item" *ngIf="entryTitle.updated_at">
                 <em><span i18n>Edited at </span>
-                  {{entryDTO.updated_at}}
+                  {{entryTitle.updated_at}}
                 </em>
             </li>
           -->

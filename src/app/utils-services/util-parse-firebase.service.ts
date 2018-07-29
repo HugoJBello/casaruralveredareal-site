@@ -25,7 +25,7 @@ export class UtilsParseFromFirebaseService {
     entryDTO.created_at = new Date(entryFire.created_at.seconds * 1000);
     entryDTO.updated_at = entryFire.updated_at;
     entryDTO.categories = entryFire.categories;
-    // entryDTO.categories_object = entryFire.categories_object;
+    // entryTitle.categories_object = entryFire.categories_object;
     entryDTO.hidden = entryFire.hidden;
     entryDTO.created_by = entryFire.created_by;
     entryDTO.edited_by = entryFire.edited_by;

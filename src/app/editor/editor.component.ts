@@ -132,7 +132,7 @@ export class EditorComponent implements OnInit, OnDestroy {
 
   public onDeleteButton(): void {
     if (window.confirm('Are sure you want to delete this item ?')) {
-      // const oldCategoriesObject = this.entryDTO.categories_object;
+      // const oldCategoriesObject = this.entryTitle.categories_object;
       this.firebaseDb.deleteEntry(this.entryDTO).then(() => {
         this.router.navigate(['./entries']);
       });
