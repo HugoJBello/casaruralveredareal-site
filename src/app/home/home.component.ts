@@ -19,11 +19,12 @@ export class HomeComponent implements OnInit {
   entryName: string = CONFIG.MAIN_PAGE_NAME;
   contentHtml: string;
   entryTitle: EntryDTO;
-  miniIntroDTO: EntryDTO;
+  contactDTO: EntryDTO;
+  infoDTO: EntryDTO;
   appName = CONFIG.APP_NAME;
   mainPageName: string = CONFIG.MAIN_PAGE_NAME;
-  miniIntroPageName: string = CONFIG.MINI_INTRO_PAGE_NAME;
-  blogVersion = false;
+  contactPageName = 'contact_page';
+  infoPageName = 'info_page';
   configDTO: ConfigDTO;
   appId: string = CONFIG.APP_ID;
   showBanners = false;
@@ -42,7 +43,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.blogVersion = CONFIG.BLOG_VERSION;
     this.innerWidth = window.innerWidth;
 
 
@@ -51,34 +51,33 @@ export class HomeComponent implements OnInit {
       this.backgroundColor = this.configDTO.banner_color;
       this.miniIntroColor = this.configDTO.mini_intro_color;
     });
-    this.getMainPage();
-    this.getMiniIntroPage();
+    this.getEntryTitlePage();
+    this.getContactPage();
+    this.getInfoPage();
   }
 
-  getMainPage() {
+  getEntryTitlePage() {
     let entriesObs: Observable<any>;
     entriesObs = this.firebaseDb.getEntry(this.entryName);
     entriesObs.subscribe((data) => {
-      this.setEntryDTO(data);
+      this.entryTitle = this.utilsService.parseEntryFromFirebase(data);
     });
   }
 
-  getMiniIntroPage() {
+  getContactPage() {
     let entriesObs: Observable<any>;
-    entriesObs = this.firebaseDb.getEntry(this.miniIntroPageName);
+    entriesObs = this.firebaseDb.getEntry(this.contactPageName);
     entriesObs.subscribe((data) => {
-      this.setMiniIntroDTO(data);
+      this.contactDTO = this.utilsService.parseEntryFromFirebase(data);
     });
   }
-
-  setEntryDTO(data) {
-    this.entryTitle = this.utilsService.parseEntryFromFirebase(data);
+  getInfoPage() {
+    let entriesObs: Observable<any>;
+    entriesObs = this.firebaseDb.getEntry(this.infoPageName);
+    entriesObs.subscribe((data) => {
+      this.infoDTO = this.utilsService.parseEntryFromFirebase(data);
+    });
   }
-
-  setMiniIntroDTO(data) {
-    this.miniIntroDTO = this.utilsService.parseEntryFromFirebase(data);
-  }
-
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.innerWidth = window.innerWidth;

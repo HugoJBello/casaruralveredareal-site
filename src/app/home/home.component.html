@@ -1,9 +1,13 @@
-
 <div *ngIf="entryTitle" class="card-main-page card card-outline-primary mb-3 background-light-gray">
   <div class="container-img">
     <img src="/assets/images/{{headImage}}" class="head"/>
-      <div class="text-over-image">
-        <h2><span class="text-over-image">{{appName}}</span></h2>
-        </div>
+    <div class="text-over-image">
+      <h2><span class="text-over-image">{{appName}}</span></h2>
+    </div>
   </div>
-<a class="nav-link" routerLink="/edit/{{mainPageName}}/hidden" *ngIf="authService.isAdmin" routerLinkActive="active"><fa name="cog" animation="spin"></fa></a>
+  <div [innerHtml]="entryTitle.content">
+  </div>
+  </div>
+  <a class="nav-link" routerLink="/edit/{{mainPageName}}/hidden" *ngIf="authService.isAdmin" routerLinkActive="active">
+    <fa name="cog" animation="spin"></fa>
+  </a>
