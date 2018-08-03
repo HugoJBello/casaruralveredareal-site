@@ -11,3 +11,7 @@
   <a class="nav-link" routerLink="/edit/{{mainPageName}}/hidden" *ngIf="authService.isAdmin" routerLinkActive="active">
     <fa name="cog" animation="spin"></fa>
   </a>
+
+  <app-info-box [title]="contactInfoTitle" [entry]="contactDTO" [pageName]="contactPageName" ></app-info-box>
+
+  <app-info-box [title]="genaralInfoTitle" [entry]="infoDTO" [pageName]="infoPageName" ></app-info-box>

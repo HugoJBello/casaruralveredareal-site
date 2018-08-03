@@ -26,7 +26,7 @@
     <input class="btn btn-danger" type="submit" (click)="onDeleteButton()" value="Delete entry" i18n/>
   </div>
 
-  <app-ngx-editor [placeholder]="'Enter text here...'" [spellcheck]="true" [(ngModel)]="entryDTO.content"></app-ngx-editor>
+  <app-ngx-editor *ngIf="entryDTO" [placeholder]="'Enter text here...'" [spellcheck]="true" [(ngModel)]="entryDTO.content"></app-ngx-editor>
 
 
 

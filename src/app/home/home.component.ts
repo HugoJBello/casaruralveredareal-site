@@ -33,7 +33,8 @@ export class HomeComponent implements OnInit {
   backgroundColor = CONFIG.DEFAULT_BANNER_COLOR;
   miniIntroColor = CONFIG.DEFAULT_BANNER_COLOR;
   headImage: string = CONFIG.HEAD_IMAGE;
-
+  genaralInfoTitle = 'La Casa';
+  contactInfoTitle = 'Contacto';
   obs: Observable<any[]>;
 
   constructor(public utilsService: UtilsParseFromFirebaseService, public authService: AuthService,

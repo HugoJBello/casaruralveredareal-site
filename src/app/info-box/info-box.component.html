@@ -1,0 +1,9 @@
+<div class="card card-quote card-outline-primary mb-3 background-light-gray">
+  <div class="card-body" style="padding: 20px;" *ngIf="entry">
+    <h2 class="card-title">{{title}}</h2>
+    <div class="card-text" style="padding: 10px;" [innerHtml]="entry.content"></div>
+  </div>
+    <a class="nav-link" routerLink="/edit/{{pageName}}/hidden" *ngIf="authService.isAdmin" routerLinkActive="active">
+      <fa name="cog" animation="spin"></fa>
+    </a>
+</div>

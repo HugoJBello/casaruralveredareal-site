@@ -33,6 +33,7 @@ import {MatPaginatorModule, MatSortModule} from '@angular/material';
 
 import {MatMenuModule} from '@angular/material/menu';
 import { EntryComponent } from './entry/entry.component';
+import { InfoBoxComponent } from './info-box/info-box.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,8 @@ import { EntryComponent } from './entry/entry.component';
     HomeComponent,
     EditorComponent,
     AdminComponent,
-    EntryComponent
+    EntryComponent,
+    InfoBoxComponent
   ],
   imports: [
     AppRoutingModule,
