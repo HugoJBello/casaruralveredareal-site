@@ -21,10 +21,13 @@ export class HomeComponent implements OnInit {
   entryTitle: EntryDTO;
   contactDTO: EntryDTO;
   infoDTO: EntryDTO;
+  whereDTO: EntryDTO;
   appName = CONFIG.APP_NAME;
   mainPageName: string = CONFIG.MAIN_PAGE_NAME;
   contactPageName = 'contact_page';
   infoPageName = 'info_page';
+  wherePageName = 'where_page';
+
   configDTO: ConfigDTO;
   appId: string = CONFIG.APP_ID;
   showBanners = false;
@@ -35,7 +38,8 @@ export class HomeComponent implements OnInit {
   headImage: string = CONFIG.HEAD_IMAGE;
   genaralInfoTitle = 'La Casa';
   contactInfoTitle = 'Contacto';
-  obs: Observable<any[]>;
+  mapInfoTile = 'Lugar';
+  tobs: Observable<any[]>;
 
   constructor(public utilsService: UtilsParseFromFirebaseService, public authService: AuthService,
               private dataServiceConfig: DataServiceConfig,
@@ -55,6 +59,8 @@ export class HomeComponent implements OnInit {
     this.getEntryTitlePage();
     this.getContactPage();
     this.getInfoPage();
+    this.getWherePage();
+
   }
 
   getEntryTitlePage() {
@@ -77,6 +83,13 @@ export class HomeComponent implements OnInit {
     entriesObs = this.firebaseDb.getEntry(this.infoPageName);
     entriesObs.subscribe((data) => {
       this.infoDTO = this.utilsService.parseEntryFromFirebase(data);
+    });
+  }
+  getWherePage() {
+    let entriesObs: Observable<any>;
+    entriesObs = this.firebaseDb.getEntry(this.wherePageName);
+    entriesObs.subscribe((data) => {
+      this.whereDTO = this.utilsService.parseEntryFromFirebase(data);
     });
   }
   @HostListener('window:resize', ['$event'])

@@ -8,7 +8,7 @@ import { AngularFireModule } from 'angularfire2';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome'
+import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { SpecialMenuComponent } from './special-menu/special-menu.component';
@@ -16,10 +16,10 @@ import { HomeComponent } from './home/home.component';
 import { EditorComponent } from './editor/editor.component';
 import { AdminComponent } from './admin/admin.component';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from "@angular/forms";
+import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material';
 import { NgxEditorModule } from 'ngx-editor';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
 
 import {AuthService} from './auth/auth.service';
 import {DataServiceConfig} from './data-service-config.service';
@@ -30,10 +30,12 @@ import {UtilsDateService} from './utils-services/utils-date.service';
 import {CdkTableModule} from '@angular/cdk/table';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule, MatSortModule} from '@angular/material';
+import {AngularOpenlayersModule} from 'ngx-openlayers';
 
 import {MatMenuModule} from '@angular/material/menu';
 import { EntryComponent } from './entry/entry.component';
 import { InfoBoxComponent } from './info-box/info-box.component';
+import { OpenlayersMapBoxWhereComponent } from './google-map-box-where/openlayers-map-box-where.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +45,8 @@ import { InfoBoxComponent } from './info-box/info-box.component';
     EditorComponent,
     AdminComponent,
     EntryComponent,
-    InfoBoxComponent
+    InfoBoxComponent,
+    OpenlayersMapBoxWhereComponent
   ],
   imports: [
     AppRoutingModule,
@@ -60,6 +63,7 @@ import { InfoBoxComponent } from './info-box/info-box.component';
     MatFormFieldModule,
     NgxEditorModule,
     HttpClientModule,
+    AngularOpenlayersModule,
   ],
   providers: [AuthService,
     DataServiceConfig,

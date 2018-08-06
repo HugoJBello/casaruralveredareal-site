@@ -1,0 +1,50 @@
+<div class="card card-quote card-outline-primary mb-3 background-light-gray">
+  <div class="card-body" style="padding: 20px;">
+    <h2 class="card-title">{{title}}</h2>
+    <div class="card-text" style="padding: 10px;">
+      <aol-map [width]="'100%'" [height]="'100%'">
+        <aol-view [zoom]="zoom">
+          <aol-coordinate [x]="lon" [y]="lat" [srid]="'EPSG:4326'"></aol-coordinate>
+        </aol-view>
+        <aol-layer-tile [opacity]="opacity">
+          <aol-source-osm></aol-source-osm>
+        </aol-layer-tile>
+        <aol-layer-vector [opacity]="opacity">
+          <aol-source-vector>
+            <aol-feature>
+              <aol-geometry-point>
+                <aol-coordinate [x]="lon" [y]="lat" [srid]="'EPSG:4326'"></aol-coordinate>
+              </aol-geometry-point>
+              <aol-style>
+                <aol-style-circle [radius]="3">
+                  <aol-style-stroke [color]="'black'" [width]="width"></aol-style-stroke>
+                  <aol-style-fill [color]="'green'"></aol-style-fill>
+                </aol-style-circle>
+              </aol-style>
+            </aol-feature>
+            <aol-feature>
+              <aol-geometry-point>
+                <aol-coordinate [x]="5.1" [y]="45.1" [srid]="'EPSG:4326'"></aol-coordinate>
+              </aol-geometry-point>
+              <aol-style>
+                <aol-style-icon
+                  [src]="'assets/marker.png'"
+                  [anchor]="[0.5, 1]"
+                  [anchorXUnits]="'fraction'" [anchorYUnits]="'fraction'"
+                  [scale]="0.1"
+                  [anchorOrigin]="'top-left'">
+                </aol-style-icon>
+              </aol-style>
+            </aol-feature>
+          </aol-source-vector>
+        </aol-layer-vector>
+      </aol-map>
+
+      <div class="card-text" style="padding: 10px;" *ngIf="entry" [innerHtml]="entry.content"></div>
+    </div>
+  </div>
+  <a class="nav-link" routerLink="/edit/{{pageName}}/hidden" *ngIf="authService.isAdmin" routerLinkActive="active">
+  <fa name="cog" animation="spin"></fa>
+</a>
+
+</div>
